@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head metacharset="utf-8">
+    <title> {% block title %}
+        <!--Titulo de cada bloque-->
+        {% endblock %}
+        | Teo Chiappero
+    </title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css\styles.css' %}">
+
+</head>
+
+<body>
+
+    <header>
+        <!--Cabecera de la página-->>
+        <div id="logotipo">
+            <!--Logo de Django-->
+            <img src="{% static '\images\logo.png' %}" />
+            <h1>Proyecto con Django</h1>
+
+
+        </div>
+
+
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'inicio' %}">Inicio</a>
+            </li>
+
+            {% for page in pages %}
+                <li>
+                    <a href="{% url 'pagina' page.2 %}">{{page.1}}</a>
+                </li>
+            {% endfor %}
+
+                        {% for page in pages %}               
+            {% endfor %}
+
+        </ul>
+    </nav>
+    
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno"></span>
+        <span class="esquina-derecha"></span>
+    </div>
+
+
+
+
+    <div id="content">
+
+        <div class="box">
+            
+            {% block content %}
+            <!--Codigo que viene de templates-->>
+            <strong>Contenido del bloque original</strong>
+            {% endblock %}
+        </div>
+       
+    </div>
+
+
+
+    <footer>
+        Master en Python &copy; Teo Chiappero - {% now "d/m/y" %}
+
+    </footer>
+
+</body>
+
+
+</html>
